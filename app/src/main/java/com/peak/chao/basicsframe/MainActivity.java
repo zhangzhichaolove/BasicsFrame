@@ -1,5 +1,6 @@
 package com.peak.chao.basicsframe;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.peak.chao.basicsframe.base.BaseActivity;
@@ -15,7 +16,17 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    protected void setTitleBar(ImageView iv_back, TextView tv_title, TextView tv_right) {
+        tv_title.setText("这是标题");
+    }
+
+    @Override
     public void initData() {
-        tv_content.setText("通过注解找到了ID");
+        tv_content.setText("找ID测试");
+    }
+
+    @Override
+    protected boolean showTitleBar() {
+        return false;
     }
 }
