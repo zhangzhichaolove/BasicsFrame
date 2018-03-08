@@ -1,16 +1,20 @@
 package com.peak.chao.basicsframe;
 
+import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.peak.chao.basicsframe.base.BaseActivity;
 import com.peak.chao.basicsframe.injection.Id;
+import com.peak.chao.basicsframe.ui.activity.AdapterDemo;
 import com.peak.chao.basicsframe.utils.ToastUtils;
 
 public class MainActivity extends BaseActivity {
     @Id(R.id.tv_content)
     TextView tv_content;
+    @Id(R.id.btn_adapter)
+    Button btn_adapter;
     private int i = 1;
 
     @Override
@@ -19,8 +23,8 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void setTitleBar(ImageView iv_back, TextView tv_title, TextView tv_right) {
-        tv_title.setText("这是标题");
+    protected void setTitleBar(View layout, TextView tv_title, TextView tv_right) {
+        tv_title.setText("首页");
     }
 
     @Override
@@ -31,8 +35,19 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    public void initListener() {
+        btn_adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AdapterDemo.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
     protected boolean showTitleBar() {
-        return false;
+        return true;
     }
 
     @Override

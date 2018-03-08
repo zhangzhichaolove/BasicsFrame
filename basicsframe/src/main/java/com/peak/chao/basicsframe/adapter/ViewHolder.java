@@ -3,6 +3,7 @@ package com.peak.chao.basicsframe.adapter;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * Created by 003 on 2018/3/8.
@@ -39,5 +40,13 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
     public ExtendViewHolder view(int viewId) {
         return ExtendViewHolder.getInstance(this, findViewById(viewId));
+    }
+
+    public ViewHolder setText(int viewId, CharSequence text) {
+        View findView = findViewById(viewId);
+        if (findView instanceof TextView) {//Button、EditText等控件继承自TextView
+            ((TextView) findView).setText(text);
+        }
+        return this;
     }
 }

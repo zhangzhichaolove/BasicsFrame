@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,7 +20,6 @@ import com.peak.chao.basicsframe.injection.FindView;
 public abstract class BaseActivity extends AppCompatActivity implements BaseInterFace, View.OnClickListener {
     protected Context mContext;
     private LinearLayout ll_content;
-    private ImageView iv_back;
     private TextView tv_title;
     private TextView tv_right;
     private long lastClick = 0;
@@ -48,7 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         LayoutInflater inflater = LayoutInflater.from(mContext);
         if (showTitleBar()) {
             View titleBar = inflater.inflate(R.layout.include_title_bar, ll_content);
-            iv_back = titleBar.findViewById(R.id.iv_back);
+            View iv_back = titleBar.findViewById(R.id.iv_back);
             tv_title = titleBar.findViewById(R.id.tv_title);
             tv_right = titleBar.findViewById(R.id.tv_right);
             iv_back.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +55,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
                     onBackPressed();
                 }
             });
-            setTitleBar(iv_back, tv_title, tv_right);
+            setTitleBar(titleBar, tv_title, tv_right);
         }
         inflater.inflate(getLayout(), ll_content);
     }
@@ -112,6 +110,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         return true;
     }
 
-    protected abstract void setTitleBar(ImageView iv_back, TextView tv_title, TextView tv_right);
+    protected abstract void setTitleBar(View layout, TextView tv_title, TextView tv_right);
 
 }

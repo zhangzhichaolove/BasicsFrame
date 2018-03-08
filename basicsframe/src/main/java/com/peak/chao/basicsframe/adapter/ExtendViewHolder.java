@@ -28,6 +28,10 @@ public class ExtendViewHolder {
         this.viewHolder = viewHolder;
     }
 
+    public ExtendViewHolder view(int viewId) {
+        return viewHolder.view(viewId);
+    }
+
 
     public ExtendViewHolder setTag(Object tag) {
         view.setTag(tag);
