@@ -18,12 +18,14 @@ import com.peak.chao.basicsframe.injection.FindView;
  * Created by Chao on 2017-12-23.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseInterFace {
+public abstract class BaseActivity extends AppCompatActivity implements BaseInterFace, View.OnClickListener {
     protected Context mContext;
-    LinearLayout ll_content;
-    ImageView iv_back;
-    TextView tv_title;
-    TextView tv_right;
+    private LinearLayout ll_content;
+    private ImageView iv_back;
+    private TextView tv_title;
+    private TextView tv_right;
+    private long lastClick = 0;
+    private int clickDelay = 200;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,6 +74,34 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
 
     @Override
     public void initListener() {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (!isFastClick()) onWidgetClick(view);
+    }
+
+    /**
+     * 是否快速点击
+     *
+     * @return true: 是 false: 否
+     */
+    private boolean isFastClick() {
+        long now = System.currentTimeMillis();
+        if (now - lastClick >= clickDelay) {
+            lastClick = now;
+            return false;
+        }
+        return true;
+    }
+
+    public void setClickDelay(int delay) {
+        clickDelay = delay;
+    }
+
+    @Override
+    public void onWidgetClick(View view) {
 
     }
 

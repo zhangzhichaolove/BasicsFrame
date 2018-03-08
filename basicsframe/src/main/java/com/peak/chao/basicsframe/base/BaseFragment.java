@@ -13,9 +13,11 @@ import android.view.ViewGroup;
  * Created by Chao on 2017-12-23.
  */
 
-public abstract class BaseFragment extends Fragment implements BaseInterFace {
+public abstract class BaseFragment extends Fragment implements BaseInterFace, View.OnClickListener {
     protected View rootView;
     protected Context mContext;
+    private long lastClick = 0;
+    private int clickDelay = 200;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,34 @@ public abstract class BaseFragment extends Fragment implements BaseInterFace {
 
     @Override
     public void initListener() {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (!isFastClick()) onWidgetClick(view);
+    }
+
+    /**
+     * 是否快速点击
+     *
+     * @return true: 是 false: 否
+     */
+    private boolean isFastClick() {
+        long now = System.currentTimeMillis();
+        if (now - lastClick >= clickDelay) {
+            lastClick = now;
+            return false;
+        }
+        return true;
+    }
+
+    public void setClickDelay(int delay) {
+        clickDelay = delay;
+    }
+
+    @Override
+    public void onWidgetClick(View view) {
 
     }
 }
