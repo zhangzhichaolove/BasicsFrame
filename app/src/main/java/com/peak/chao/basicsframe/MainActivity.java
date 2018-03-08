@@ -24,6 +24,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void setTitleBar(View layout, TextView tv_title, TextView tv_right) {
+        layout.findViewById(R.id.iv_back).setVisibility(View.GONE);
         tv_title.setText("首页");
     }
 
