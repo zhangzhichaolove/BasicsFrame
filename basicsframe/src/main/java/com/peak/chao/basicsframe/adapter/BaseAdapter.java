@@ -21,6 +21,9 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<ViewHolder> im
     private OnItemClickListener mOnItemClickListener;
     private OnItemLongClickListener mOnItemLongClickListener;
 
+    /**
+     * 单布局构造
+     */
     public BaseAdapter(Context context, List<T> mDatas, int layoutId) {
         this.mContext = context;
         this.mData = mDatas;
@@ -31,19 +34,25 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<ViewHolder> im
         this.itemViewType = null;
     }
 
+    /**
+     * 多布局构造
+     */
     public BaseAdapter(Context context, List<T> mDatas, RLItemViewType<T> viewType) {
         this.mContext = context;
         this.mData = mDatas;
         if (this.mData == null) {
             this.mData = new ArrayList<>();
         }
-        this.itemViewType = itemViewType == null ? createViewType() : itemViewType;
+        this.itemViewType = viewType == null ? createViewType() : viewType;
         if (itemViewType == null) {
-            //使用这个构造函数，你必须通过实现RLItemViewType接口。
+            //使用这个构造函数，你必须实现RLItemViewType接口。
             new NullPointerException("NullPointerException  With this constructor, you must implement the RLItemViewType interface.");
         }
     }
 
+    /**
+     * 如果多布局未在构造中指定Type时，需要在内部实现此方法
+     */
     protected RLItemViewType<T> createViewType() {
         return null;
     }
@@ -51,9 +60,11 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<ViewHolder> im
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
+        //加载指定item布局
         View inflate = LayoutInflater.from(mContext).inflate(itemViewType == null ?
                 layoutId : itemViewType.getLayoutId(viewType), parent, false);
         final ViewHolder holder = new ViewHolder(inflate);
+        //用户需要监听时，才设置监听事件
         if (mOnItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -109,5 +120,8 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<ViewHolder> im
         return mData;
     }
 
+    /**
+     * 绑定数据操作
+     */
     public abstract void onBind(ViewHolder holder, int position, T item);
 }
