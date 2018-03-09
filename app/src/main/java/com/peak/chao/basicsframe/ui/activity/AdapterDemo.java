@@ -46,7 +46,7 @@ public class AdapterDemo extends BaseActivity {
         rl_list.setAdapter(adapter = new BaseAdapter<String>(mContext, list, R.layout.item_rl_list) {
             @Override
             public void onBind(ViewHolder holder, int position, String item) {
-                holder.view(R.id.iv_img).setBackgroundResource(R.mipmap.ic_launcher).view(R.id.tv_name).setText(item);
+                holder.view(R.id.iv_img).setBackgroundResource(R.mipmap.ic_launcher).setText(R.id.tv_name, item);
             }
         });
     }

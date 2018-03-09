@@ -86,7 +86,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<ViewHolder> im
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public final void onBindViewHolder(ViewHolder holder, int position) {
         onBind(holder, position, mData.get(position));
     }
 
