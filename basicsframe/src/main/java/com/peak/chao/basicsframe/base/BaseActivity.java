@@ -31,7 +31,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseInte
         mContext = this;
         setContentView(R.layout.activity_base);
         ll_content = findViewById(R.id.ll_content);
+        initPresenter();
         init();
+    }
+
+    protected void initPresenter() {
     }
 
     private void init() {
