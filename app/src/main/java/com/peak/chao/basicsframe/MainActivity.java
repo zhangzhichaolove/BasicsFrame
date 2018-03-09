@@ -5,10 +5,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.peak.chao.basicsframe.base.BaseActivity;
 import com.peak.chao.basicsframe.injection.Id;
 import com.peak.chao.basicsframe.ui.activity.AdapterDemo;
-import com.peak.chao.basicsframe.utils.ToastUtils;
 
 public class MainActivity extends BaseActivity {
     @Id(R.id.tv_content)
@@ -54,6 +54,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onWidgetClick(View view) {
         i++;
-        ToastUtils.showToast("现在输出：" + i);
+        ToastUtils.showShort("现在输出：" + i);
     }
 }

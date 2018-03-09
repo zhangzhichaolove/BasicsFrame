@@ -10,7 +10,7 @@ public class BasicsFrame {
     private static BasicsFrame instance;
     private Context context;
 
-    private void BasicsFrame() {
+    private BasicsFrame() {
     }
 
     public static BasicsFrame getInstance() {
