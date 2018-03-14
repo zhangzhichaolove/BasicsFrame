@@ -39,14 +39,26 @@ public class AdapterDemo extends BaseActivity {
     @Override
     public void initData() {
         rl_list.setLayoutManager(new LinearLayoutManager(mContext));
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
+        final List<String> list = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
             list.add("模拟数据：" + i);
         }
-        rl_list.setAdapter(adapter = new BaseAdapter<String>(mContext, list, R.layout.item_rl_list) {
+        rl_list.setAdapter(adapter = new BaseAdapter<String>(mContext, list, R.layout.item_rl_recycler) {
             @Override
             public void onBind(ViewHolder holder, int position, String item) {
-                holder.view(R.id.iv_img).setBackgroundResource(R.mipmap.ic_launcher).setText(R.id.tv_name, item);
+                holder.setText(R.id.tv_name, item);
+                RecyclerView item_rl = holder.findViewById(R.id.item_rl);
+                item_rl.setLayoutManager(new LinearLayoutManager(mContext));
+                final List<String> list = new ArrayList<>();
+                for (int i = 0; i < 20; i++) {
+                    list.add("内部条目数据：" + i);
+                }
+                item_rl.setAdapter(new BaseAdapter<String>(mContext, list, R.layout.item_rl_list) {
+                    @Override
+                    public void onBind(ViewHolder holder, int position, String item) {
+                        holder.view(R.id.iv_img).setBackgroundResource(R.mipmap.ic_launcher).setText(R.id.tv_name, item);
+                    }
+                });
             }
         });
     }

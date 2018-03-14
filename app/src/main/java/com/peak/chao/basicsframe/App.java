@@ -3,8 +3,8 @@ package com.peak.chao.basicsframe;
 import android.app.Application;
 
 import com.blankj.utilcode.util.Utils;
-import com.peak.chao.basicsframe.main.BasicsFrame;
 import com.peak.chao.basicsframe.config.FrameConfig;
+import com.peak.chao.basicsframe.main.BasicsFrame;
 import com.peak.chao.basicsframe.utils.FrameConstantUtils;
 
 /**
