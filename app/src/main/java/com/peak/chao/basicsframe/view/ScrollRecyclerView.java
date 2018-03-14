@@ -29,26 +29,21 @@ public class ScrollRecyclerView extends RecyclerView {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (getChildCount() > 0) {
-            int itemHeight = getChildAt(0).getMeasuredHeight() * getChildCount();
-            int measuredHeight = getMeasuredHeight();
-            if (itemHeight > measuredHeight) {
-                isScroll = true;
-                getParent().requestDisallowInterceptTouchEvent(true);
-            }
+        if (isScroll) {
+            getParent().requestDisallowInterceptTouchEvent(true);
         }
         return super.dispatchTouchEvent(ev);
     }
 
     @Override
     protected void onMeasure(int widthSpec, int heightSpec) {
-        //super.onMeasure(widthSpec, heightSpec);
         int size = MeasureSpec.getSize(heightSpec);
         if (getChildCount() > 0) {
             int itemHeight = getChildAt(0).getMeasuredHeight() * getChildCount();
             if (itemHeight < size) {
                 setMeasuredDimension(widthSpec, itemHeight);
             } else {
+                isScroll = true;
                 super.onMeasure(widthSpec, heightSpec);
             }
         } else {
@@ -56,9 +51,4 @@ public class ScrollRecyclerView extends RecyclerView {
         }
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        invalidate();
-    }
 }
