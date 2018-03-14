@@ -12,10 +12,10 @@
         android:layout_marginLeft="10dp"
         tools:text="名字" />
 
-    <android.support.v7.widget.RecyclerView
+    <com.peak.chao.basicsframe.view.ScrollRecyclerView
         android:id="@+id/item_rl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="150dp" />
 
 
 </LinearLayout>
