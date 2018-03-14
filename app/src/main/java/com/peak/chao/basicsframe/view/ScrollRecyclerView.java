@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 
 public class ScrollRecyclerView extends RecyclerView {
     private boolean isScroll;
+    private float downY;
 
 
     public ScrollRecyclerView(Context context) {
@@ -29,8 +30,20 @@ public class ScrollRecyclerView extends RecyclerView {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (isScroll) {
-            getParent().requestDisallowInterceptTouchEvent(true);
+        int action = ev.getAction();
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                downY = ev.getRawY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                int moveY = (int) ev.getRawY();
+                if (isScroll && ((moveY - downY > 0 && canScrollVertically(-1)) || (moveY - downY < 0 && canScrollVertically(1)))) {
+                    getParent().requestDisallowInterceptTouchEvent(true);
+                    return super.dispatchTouchEvent(ev);
+                } else {
+                    getParent().requestDisallowInterceptTouchEvent(false);
+                    return false;
+                }
         }
         return super.dispatchTouchEvent(ev);
     }
@@ -48,6 +61,17 @@ public class ScrollRecyclerView extends RecyclerView {
             }
         } else {
             super.onMeasure(widthSpec, heightSpec);
+        }
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+        if (getChildCount() > 0) {
+            int itemHeight = getChildAt(0).getMeasuredHeight() * getChildCount();
+            if (itemHeight > getMeasuredHeight()) {
+                isScroll = true;
+            }
         }
     }
 
