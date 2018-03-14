@@ -50,7 +50,7 @@ public class AdapterDemo extends BaseActivity {
                 RecyclerView item_rl = holder.findViewById(R.id.item_rl);
                 item_rl.setLayoutManager(new LinearLayoutManager(mContext));
                 final List<String> list = new ArrayList<>();
-                for (int i = 0; i < 20; i++) {
+                for (int i = 0; i < position + 1; i++) {
                     list.add("内部条目数据：" + i);
                 }
                 item_rl.setAdapter(new BaseAdapter<String>(mContext, list, R.layout.item_rl_list) {
