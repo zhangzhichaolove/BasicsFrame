@@ -9,6 +9,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.peak.chao.basicsframe.base.BaseActivity;
 import com.peak.chao.basicsframe.injection.Id;
 import com.peak.chao.basicsframe.ui.activity.AdapterDemo;
+import com.peak.chao.basicsframe.ui.activity.WebActivity;
 
 public class MainActivity extends BaseActivity {
     @Id(R.id.tv_content)
@@ -33,6 +34,7 @@ public class MainActivity extends BaseActivity {
         tv_content.setText("找ID测试");
         tv_content.setOnClickListener(this);
         setClickDelay(1000);
+        startActivity(new Intent(this, WebActivity.class).putExtra(WebActivity.WEB_URL, "file:///android_asset/ClickTest.html"));
     }
 
     @Override

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.peak.chao.basicsframe">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -18,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.AdapterDemo" />
+        <activity android:name=".ui.activity.WebActivity" />
     </application>
 
 </manifest>
