@@ -4,7 +4,7 @@ package com.peak.chao.basicsframe.net;
  * Created by Chao  2018/3/9 on 11:48
  * description
  */
-public class HttpResultDTO<T extends Mapper<R>, R> {
+public class HttpResultDTO<T> {
     private int code;
     private String msg;
     private T data;
