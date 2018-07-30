@@ -49,7 +49,7 @@ public class ApiRequest {
      * @param observer
      * @param <T>
      */
-    public synchronized static <T extends HttpResultDTO<R, M>, R extends Mapper<M>, M> void request(Observable<T> observable, Observer<M> observer) {
+    public synchronized static <T extends HttpResultDTO<R>, R extends Mapper<M>, M> void request(Observable<T> observable, Observer<M> observer) {
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
