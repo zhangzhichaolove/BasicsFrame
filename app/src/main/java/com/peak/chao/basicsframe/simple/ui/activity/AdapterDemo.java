@@ -1,4 +1,4 @@
-package com.peak.chao.basicsframe.ui.activity;
+package com.peak.chao.basicsframe.simple.ui.activity;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -6,12 +6,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.ToastUtils;
-import com.peak.chao.basicsframe.R;
 import com.peak.chao.basicsframe.adapter.BaseAdapter;
 import com.peak.chao.basicsframe.adapter.OnItemClickListener;
 import com.peak.chao.basicsframe.adapter.ViewHolder;
 import com.peak.chao.basicsframe.base.BaseActivity;
 import com.peak.chao.basicsframe.injection.Id;
+import com.peak.chao.basicsframe.simple.R;
 
 import java.util.ArrayList;
 import java.util.List;

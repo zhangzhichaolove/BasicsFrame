@@ -1,4 +1,4 @@
-package com.peak.chao.basicsframe.view;
+package com.peak.chao.basicsframe.simple.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

@@ -12,7 +12,7 @@
         android:layout_marginLeft="10dp"
         tools:text="名字" />
 
-    <com.peak.chao.basicsframe.view.ScrollRecyclerView
+    <com.peak.chao.basicsframe.simple.view.ScrollRecyclerView
         android:id="@+id/item_rl"
         android:layout_width="match_parent"
         android:layout_height="150dp" />

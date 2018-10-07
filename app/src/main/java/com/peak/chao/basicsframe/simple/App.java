@@ -1,4 +1,4 @@
-package com.peak.chao.basicsframe;
+package com.peak.chao.basicsframe.simple;
 
 import android.app.Application;
 

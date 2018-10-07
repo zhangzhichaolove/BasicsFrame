@@ -1,4 +1,4 @@
-package com.peak.chao.basicsframe;
+package com.peak.chao.basicsframe.simple;
 
 import android.content.Intent;
 import android.view.View;
@@ -8,8 +8,8 @@ import android.widget.TextView;
 import com.blankj.utilcode.util.ToastUtils;
 import com.peak.chao.basicsframe.base.BaseActivity;
 import com.peak.chao.basicsframe.injection.Id;
-import com.peak.chao.basicsframe.ui.activity.AdapterDemo;
-import com.peak.chao.basicsframe.ui.activity.WebActivity;
+import com.peak.chao.basicsframe.simple.ui.activity.AdapterDemo;
+import com.peak.chao.basicsframe.simple.ui.activity.WebActivity;
 
 public class MainActivity extends BaseActivity {
     @Id(R.id.tv_content)

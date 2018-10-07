@@ -1,4 +1,4 @@
-package com.peak.chao.basicsframe.ui.activity;
+package com.peak.chao.basicsframe.simple.ui.activity;
 
 import android.app.Activity;
 import android.content.Context;
